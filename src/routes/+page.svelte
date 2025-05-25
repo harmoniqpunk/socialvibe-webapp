@@ -326,8 +326,61 @@
 					</h2>
 				</div>
 				<div class="divide-y divide-light-positive-muted-gray dark:divide-dark-positive-muted-gray max-h-[60vh] overflow-y-auto">
-					{#each currentPosts as post, i (post.id)}
-						<Post {post} isLast={i === currentPosts.length - 1} />
+					{#each currentPosts as post (post.id)}
+						{@const priorityClass = post.priority === 'high' ? 'border-l-light-negative-primary dark:border-l-dark-negative-primary bg-light-negative-background/30 dark:bg-dark-negative-background/30' : post.priority === 'medium' ? 'border-l-yellow-500 dark:border-l-yellow-400 bg-yellow-500/10 dark:bg-yellow-400/10' : 'border-l-green-500 dark:border-l-green-400 bg-green-500/10 dark:bg-green-400/10'}
+						<div
+							class={`p-4 border-l-4 ${priorityClass} cursor-pointer hover:bg-light-positive-muted-gray/50 dark:hover:bg-dark-positive-muted-gray/50 transition-colors`}
+							on:click={() => openModal(post)}
+							role="button"
+							tabindex="0"
+							on:keydown={(e) => e.key === 'Enter' && openModal(post)}
+						>
+							<div class="flex items-start justify-between">
+								<div class="flex-1">
+									<div class="flex items-center mb-2">
+										<span class="text-2xl mr-2">{post.avatar}</span>
+										<span class="font-semibold text-light-positive-link dark:text-dark-positive-link">{post.name} <span class="text-light-positive-text/70 dark:text-dark-positive-text/70 font-normal">{post.author}</span></span>
+										<span class="text-light-positive-text/60 dark:text-dark-positive-text/60 text-sm ml-2 flex items-center">
+											<Clock class="h-4 w-4 mr-1" />
+											{selectedTab === 'latest' && typeof post.timestamp === 'number' ? formatLatestPostTimestamp(post.timestamp) : post.timestamp.toString()}
+										</span>
+									</div>
+									<p class="text-light-positive-text dark:text-dark-positive-text mb-3 whitespace-pre-wrap">{post.content}</p>
+									<div class="flex items-center space-x-4 text-sm text-light-positive-text/80 dark:text-dark-positive-text/80">
+										<div class="flex items-center">
+											<Heart class="h-4 w-4 mr-1 text-red-500" />
+											{formatNumber(post.likes)}
+										</div>
+										<div class="flex items-center">
+											<Repeat2 class="h-4 w-4 mr-1 text-green-500" />
+											{formatNumber(post.retweets)}
+										</div>
+										<div class="flex items-center">
+											<MessageCircle class="h-4 w-4 mr-1 text-blue-500" />
+											{formatNumber(post.replies)}
+										</div>
+										<div class="flex items-center">
+											<Eye class="h-4 w-4 mr-1 text-purple-500" />
+											{formatNumber(post.impressions)}
+										</div>
+									</div>
+								</div>
+								<div class="ml-4 text-right flex flex-col items-end justify-between h-full">
+									<div>
+										<div class="text-lg font-bold text-light-positive-text dark:text-dark-positive-text">
+											{formatNumber(post.engagement)}
+										</div>
+										<div class="text-xs text-light-positive-text/60 dark:text-dark-positive-text/60">Total Engagements</div>
+									</div>
+									<button
+										on:click={(event) => handleSkipPost(post.id, event)}
+										class="mt-2 px-3 py-1 bg-light-positive-muted-gray dark:bg-dark-positive-muted-gray text-light-positive-text dark:text-dark-positive-text rounded hover:opacity-80 text-xs font-semibold transition-opacity"
+									>
+										Skip
+									</button>
+								</div>
+							</div>
+						</div>
 					{/each}
 				</div>
 			</div>
@@ -355,26 +408,67 @@
 							<X class="h-6 w-6" />
 						</button>
 					</div>
-					<div class="p-4">
-						<textarea
-							value={newReplyText}
-							on:input={(e) => newReplyText = e.target.value}
-							class="w-full p-2 border border-light-positive-muted-gray dark:border-dark-positive-muted-gray rounded"
-						></textarea>
-						<div class="mt-4 flex justify-end space-x-2">
-							<button
-								on:click={() => handleReply(newReplyText)}
-								class="px-4 py-2 bg-light-positive-primary dark:bg-dark-positive-primary text-light-positive-background dark:text-dark-positive-background rounded"
-							>
-								Send
-							</button>
-							<button
-								on:click={addCustomReplyTemplate}
-								class="px-4 py-2 bg-light-positive-primary dark:bg-dark-positive-primary text-light-positive-background dark:text-dark-positive-background rounded"
-							>
-								Add Custom Template
-							</button>
-						</div>
+					<div class="p-6 overflow-y-auto flex-grow">
+						{#if selectedPost}
+							<div class="bg-light-positive-muted-gray/30 dark:bg-dark-positive-muted-gray/30 p-4 rounded-lg mb-6 border border-light-positive-muted-gray/50 dark:border-dark-positive-muted-gray/50">
+								<div class="flex items-center mb-3">
+									<span class="text-2xl mr-3">{selectedPost.avatar}</span>
+									<div>
+										<span class="font-semibold text-light-positive-link dark:text-dark-positive-link">{selectedPost.name} <span class="text-light-positive-text/70 dark:text-dark-positive-text/70 font-normal">{selectedPost.author}</span></span>
+										<div class="text-sm text-light-positive-text/60 dark:text-dark-positive-text/60">
+											{typeof selectedPost.timestamp === 'number' ? formatLatestPostTimestamp(selectedPost.timestamp) : selectedPost.timestamp.toString()}
+										</div>
+									</div>
+								</div>
+								<p class="text-light-positive-text dark:text-dark-positive-text mb-3 whitespace-pre-wrap">{selectedPost.content}</p>
+								<div class="flex items-center space-x-4 text-sm text-light-positive-text/80 dark:text-dark-positive-text/80">
+									<div class="flex items-center"><Heart class="h-4 w-4 mr-1 text-red-500" />{formatNumber(selectedPost.likes)}</div>
+									<div class="flex items-center"><Repeat2 class="h-4 w-4 mr-1 text-green-500" />{formatNumber(selectedPost.retweets)}</div>
+									<div class="flex items-center"><Eye class="h-4 w-4 mr-1 text-purple-500" />{formatNumber(selectedPost.impressions)}</div>
+								</div>
+							</div>
+
+							<div class="mb-6">
+								<h4 class="font-semibold text-light-positive-text dark:text-dark-positive-text mb-3">Quick Replies:</h4>
+								<div class="space-y-2">
+									{#each quickReplies as reply (reply.id)}
+										<button
+											on:click={() => handleReply(reply.text)}
+											class="w-full text-left p-3 bg-light-positive-secondary/20 dark:bg-dark-positive-secondary/20 hover:bg-light-positive-secondary/30 dark:hover:bg-dark-positive-secondary/30 rounded-lg text-sm transition-colors border border-light-positive-secondary/50 dark:border-dark-positive-secondary/50 text-light-positive-text dark:text-dark-positive-text"
+										>
+											{reply.text}
+										</button>
+									{/each}
+								</div>
+							</div>
+
+							<div class="border-t border-light-positive-muted-gray dark:border-dark-positive-muted-gray pt-6">
+								<h4 class="font-semibold text-light-positive-text dark:text-dark-positive-text mb-3">Custom Reply:</h4>
+								<textarea
+									bind:value={newReplyText}
+									placeholder="Write your custom reply..."
+									class="w-full p-3 border border-light-positive-muted-gray dark:border-dark-positive-muted-gray rounded-lg text-sm resize-none focus:ring-2 focus:ring-light-positive-primary dark:focus:ring-dark-positive-primary focus:border-light-positive-primary dark:focus:border-dark-positive-primary bg-light-positive-background dark:bg-dark-positive-muted-gray text-light-positive-text dark:text-dark-positive-text"
+									rows="4"
+								></textarea>
+								<div class="flex mt-4 space-x-3">
+									<button
+										on:click={addCustomReplyTemplate}
+										disabled={!newReplyText.trim()}
+										class="px-4 py-2 bg-light-positive-muted dark:bg-dark-positive-muted text-white rounded-lg text-sm hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
+									>
+										Save as Template
+									</button>
+									<button
+										on:click={() => handleReply(newReplyText)}
+										disabled={!newReplyText.trim()}
+										class="flex-1 px-4 py-2 bg-light-positive-button-bg dark:bg-dark-positive-button-bg text-light-positive-button-text dark:text-dark-positive-button-text rounded-lg text-sm hover:bg-light-positive-button-hover-bg dark:hover:bg-dark-positive-button-hover-bg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transition-colors"
+									>
+										<Send class="h-4 w-4 mr-2" />
+										Send Reply
+									</button>
+								</div>
+							</div>
+						{/if}
 					</div>
 				</div>
 			</div>
