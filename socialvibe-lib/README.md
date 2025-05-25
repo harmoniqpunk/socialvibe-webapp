@@ -70,7 +70,7 @@ wasm-pack publish
 
 This project is licensed under the BSD 3-Clause License. See the [LICENSE](LICENSE) file for details.
 
-Copyright (c) 2024, Harmoniis Tech Ltd
+Copyright (c) 2024, SocialVibe Technologies Ltd
 
 ## Contribution
 
