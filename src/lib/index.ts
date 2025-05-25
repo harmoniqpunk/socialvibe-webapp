@@ -1,8 +1,8 @@
-import init, { greet } from './os4web_lib';
+import init, { greet } from './socialvibe_lib/socialvibe_lib';
 
 export async function initializeWasm() {
     await init();
-    console.log("WASM module initialized");
+    console.log("SocialVibe WASM module initialized");
 }
 
 // Re-export the greet function
