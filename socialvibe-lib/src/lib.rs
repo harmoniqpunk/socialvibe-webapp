@@ -9,5 +9,5 @@ extern "C" {
 
 #[wasm_bindgen]
 pub fn greet() {
-    alert("Hello, os4web-lib!");
+    alert("Hello, SocialVibe WASM Library!");
 }

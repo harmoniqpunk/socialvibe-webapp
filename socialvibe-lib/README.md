@@ -1,6 +1,6 @@
 <div align="center">
 
-  <h1><code>wasm-pack-template</code></h1>
+  <h1><code>socialvibe-lib</code></h1>
 
   <strong>A template for kick starting a Rust and WebAssembly project using <a href="https://github.com/rustwasm/wasm-pack">wasm-pack</a>.</strong>
 
@@ -37,8 +37,8 @@ templates and usages of `wasm-pack`.
 [Learn more about `cargo generate` here.](https://github.com/ashleygwilliams/cargo-generate)
 
 ```
-cargo generate --git https://github.com/rustwasm/wasm-pack-template.git --name my-project
-cd my-project
+cargo generate --git https://github.com/rustwasm/wasm-pack-template.git --name socialvibe-lib
+cd socialvibe-lib
 ```
 
 ### 🛠️ Build with `wasm-pack build`
