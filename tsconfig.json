@@ -9,20 +9,21 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"moduleResolution": "node",
-		"types": [
-			"@cloudflare/workers-types"
-		]
+		"moduleResolution": "bundler",
+		"target": "ESNext",
+		"module": "ESNext"
 	},
 	"include": [
-		"src/**/*",
-		"*.ts",
-		"*.svelte"
+		"src/**/*.d.ts",
+		"src/**/*.ts",
+		"src/**/*.js",
+		"src/**/*.svelte"
 	],
 	"exclude": [
 		"node_modules",
 		"build",
 		"dist",
-		".svelte-kit"
+		".svelte-kit",
+		"src/lib/socialvibe_lib/**/*.js"
 	]
 }

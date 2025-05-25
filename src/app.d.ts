@@ -4,19 +4,10 @@
 // for information about these interfaces
 declare global {
 	namespace App {
-
-		interface Platform {
-			env: {
-				SOCIALVIBE_KV: KVNamespace;
-				GROQ_API_KEY: string;
-			};
-			context: {
-				waitUntil(promise: Promise<any>): void;
-			};
-			caches: CacheStorage & { default: Cache }
-		}
-
-		
+		// interface Error {}
+		// interface Locals {}
+		// interface PageData {}
+		// interface Platform {}
 	}
 }
 
