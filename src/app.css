@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styles for headings */
+@layer base {
+	/* Positive section headings */
+	.positive-section h1,
+	.positive-section h2 {
+		@apply text-light-positive-primary dark:text-dark-positive-primary;
+	}
+
+	/* Negative section headings */
+	.negative-section h1,
+	.negative-section h2 {
+		@apply text-light-negative-primary dark:text-dark-negative-primary;
+	}
+
+	/* Default styles for headings */
+	h1 {
+		@apply text-4xl font-bold mb-4;
+	}
+
+	h2 {
+		@apply text-3xl font-semibold mb-3;
+	}
+
+	/* Commented out unused heading styles
+	h3 {
+		@apply text-2xl font-semibold mb-2;
+	}
+
+	h4 {
+		@apply text-xl font-medium mb-2;
+	}
+
+	h5 {
+		@apply text-lg font-medium mb-1;
+	}
+
+	h6 {
+		@apply text-base font-medium mb-1;
+	}
+	*/
+}
+
+/* Custom utilities */
+@layer utilities {
+	.line-clamp-4 {
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+}
+
+/* You can add any other custom styles below this line */
+
+/* Debug styles */
+.debug-outline {
+	outline: 1px solid red !important;
+	position: relative;
+}
+
+.debug-outline::before {
+	content: attr(data-name);
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: rgba(255, 0, 0, 0.8);
+	color: white;
+	padding: 2px 4px;
+	font-size: 10px;
+	z-index: 9999;
+}
