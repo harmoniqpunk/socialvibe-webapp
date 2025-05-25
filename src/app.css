@@ -4,26 +4,26 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global styles for headings */
+/* Global styles for general text content headings, not for component internal titles */
 @layer base {
-	/* Positive section headings */
-	.positive-section h1,
-	.positive-section h2 {
+	/* Positive section general headings */
+	.prose .positive-section h1,
+	.prose .positive-section h2 {
 		@apply text-light-positive-primary dark:text-dark-positive-primary;
 	}
 
-	/* Negative section headings */
-	.negative-section h1,
-	.negative-section h2 {
+	/* Negative section general headings */
+	.prose .negative-section h1,
+	.prose .negative-section h2 {
 		@apply text-light-negative-primary dark:text-dark-negative-primary;
 	}
 
-	/* Default styles for headings */
-	h1 {
+	/* Default styles for general text content headings */
+	.prose h1 { /* Apply only to h1 within prose text */
 		@apply text-4xl font-bold mb-4;
 	}
 
-	h2 {
+	.prose h2 { /* Apply only to h2 within prose text */
 		@apply text-3xl font-semibold mb-3;
 	}
 
