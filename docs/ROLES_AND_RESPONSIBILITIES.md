@@ -9,7 +9,7 @@
 * **AI Planner (Gemini Model Family):** Lead AI Planner for SocialVibe WebApp
     * **Responsibilities:** Deconstructs requirements, designs frontend architecture and components, creates development roadmaps, structures project documentation, defines tasks for AI Executors. Manages project flow.
 * **AI Executor (Claude/O3 Model Family):** AI Code Implementer
-    * **Responsibilities:** Executes well-defined coding and scripting tasks assigned by the AI Planner. Follows instructions and guardrails meticulously. Reports success/failure. Handles Git commits under Planner/Operator direction.
+    * **Responsibilities:** Executes well-defined coding and scripting tasks assigned by the AI Planner. Follows instructions and guardrails meticulously. Reports success/failure. Handles Git commits under Planner/Operator direction. May utilize browser tools via an MCP server and Chrome extension as documented in `docs/BROWSER_TOOLS_GUIDE.MD`.
 
 ## 2. Personas and Interaction Styles
 

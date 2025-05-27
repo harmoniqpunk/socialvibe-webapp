@@ -15,6 +15,7 @@ This framework mandates a first-principles, evidence-based approach. **All actio
 * **Adherence to Project Scope:** Focus solely on tasks related to the SocialVibe WebApp frontend as defined in `docs/PROJECT_OVERVIEW.md` and the roadmap.
 * **Accountability & Verification**: Log actions and justifications (implicitly through prompts and responses). Planner and Tech Lead verify changes against requirements and through testing.
 * **Security and TOS Compliance:** All interactions with external platforms must be designed with security and Terms of Service compliance in mind. Automated actions should mimic human behavior where appropriate and avoid aggressive patterns.
+* **Browser Tools Usage:** Any use of browser-based development tools must strictly follow the guidelines in `docs/BROWSER_TOOLS_GUIDE.MD`. The Planner must explicitly instruct the Executor when and how to use these tools.
 
 ## 3. Guardrails: What to Do (Mandatory Actions)
 
