@@ -130,13 +130,20 @@ This project utilizes an AI Planner to help manage and drive development. The Pl
 
 ### Onboarding and Interacting with the AI Planner
 
-1.  **Planner's Initial Onboarding (Automatic):**
-    * When you first invoke the AI Planner, it will ask you to identify if you are "George" or "Mihnea."
-    * After you identify yourself, the Planner will **automatically** begin its own internal onboarding process. This involves sequentially reading the core documents listed above (starting with `docs/SYSTEM_PROMPT.MD`, then `docs/PLANNER_OPERATING_MANUAL.MD`, etc.), as detailed in its `SYSTEM_PROMPT.MD`.
+1.  **Invoking the AI Planner (Human Operator Action):**
+    * To start a session, you (the Human Operator - George or Mihnea) must invoke the AI Planner.
+    * When invoking the Planner, you need to provide it with access to the `socialvibe-webapp` project folder (so it can read the `docs/` and `src/` files).
+    * Your initial prompt to the Planner should identify who you are (George or Mihnea) and state that its first task is to perform its internal onboarding. For example:
+      `"Hello Planner, this is [Your Name: George/Mihnea]. Please begin your standard onboarding procedure for the SocialVibe WebApp project. The project folder is accessible at [current working directory or path to project root]."`
+
+2.  **Planner's Internal Onboarding (AI Planner Action):**
+    * Upon receiving your initial prompt, the Planner will follow the instructions in its `docs/SYSTEM_PROMPT.MD` (Section 2).
+    * It will first confirm your identity.
+    * Then, it will announce that it's starting its internal onboarding. This involves sequentially reading core project documents (`SYSTEM_PROMPT.MD`, `PLANNER_OPERATING_MANUAL.MD`, etc.).
     * The Planner will **confirm its understanding with you** after processing key groups of documents and will await your go-ahead before proceeding to the next stage or being ready for tasks.
     * This entire internal onboarding by the Planner must complete before you can assign it your first development task for the session.
 
-2.  **Starting a Development Session (After Planner Onboarding):**
+3.  **Starting a Development Task (After Planner Onboarding):**
     * Once the Planner confirms it's fully onboarded and ready (e.g., *"I am now fully onboarded and ready to assist. Please provide your objective for this session."*), you can state your development goal.
     * The Planner will then review `docs/PROJECT_TODO.MD` and `docs/PROJECT_STATUS.MD` and proceed with planning.
 
