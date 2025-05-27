@@ -8,7 +8,7 @@ This document provides guidance on setting up and using specific browser tools t
 
 ## 2. Overview of Tools
 
-* **Purpose:** [Operator to fill in: Briefly describe the primary purpose of these browser tools in the context of SocialVibe development, e.g., inspecting complex DOM structures, verifying UI states, assisting with E2E test debugging, etc.]
+* **Purpose:** [Operator George/Mihnea to fill in: Briefly describe the primary purpose of these browser tools in the context of SocialVibe development, e.g., inspecting complex DOM structures, verifying UI states, assisting with E2E test debugging, etc.]
 * **Components:**
     * Browser Extension (e.g., for Chrome, Cursor)
     * MCP Server (Local application that bridges the Executor and the browser extension)
