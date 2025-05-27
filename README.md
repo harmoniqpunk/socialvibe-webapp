@@ -115,27 +115,35 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## AI Planner & Development Workflow
 
-This project utilizes an AI Planner to help manage and drive development. Please familiarize yourself with the documentation in the `docs/` directory, especially:
+This project utilizes an AI Planner to help manage and drive development. The Planner follows a strict onboarding protocol and specific interaction flows depending on the operator.
 
-* `docs/SYSTEM_PROMPT.md`: The AI Planner's core operating instructions.
-* `docs/PLANNER_OPERATING_MANUAL.md`: Detailed guidelines for how the Planner works, including Git workflows and progress tracking.
-* `docs/PROJECT_OVERVIEW.md`: The vision and goals for this application.
-* `docs/ROLES_AND_RESPONSIBILITIES.md`: Defines who is who (human and AI).
-* `docs/BROWSER_TOOLS_GUIDE.md`: Information on setting up and using browser-based development tools with the AI Executor.
+### Key Documentation for the Planner Ecosystem:
+* `docs/SYSTEM_PROMPT.MD`: The AI Planner's core operating instructions. **This is the first document the Planner processes to understand its role and how to interact with other documents.**
+* `docs/PLANNER_OPERATING_MANUAL.MD`: Detailed guidelines for how the Planner works, including how it should author prompts for AI Executors, Git workflows for different operators, and progress tracking procedures.
+* `docs/PROJECT_OVERVIEW.MD`: The vision and goals for this application.
+* `docs/ARCHITECTURE.MD`: Technical architecture of the SocialVibe WebApp.
+* `docs/ROLES_AND_RESPONSIBILITIES.MD`: Defines roles for Human Operators (George, Mihnea) and AI agents.
+* `docs/DEVELOPMENT_GUARDRAILS.MD`: Non-negotiable development rules.
+* `docs/PROJECT_TODO.MD`: Live list of development tasks.
+* `docs/PROJECT_STATUS.MD`: Log of ongoing and completed tasks and sessions.
+* `docs/BROWSER_TOOLS_GUIDE.MD`: Information on setting up and using any project-specific browser-based development tools.
 
-### Onboarding the AI Planner
+### Onboarding and Interacting with the AI Planner
 
-To start a development session with the AI Planner:
+1.  **Planner's Initial Onboarding (Automatic):**
+    * When you first invoke the AI Planner, it will ask you to identify if you are "George" or "Mihnea."
+    * After you identify yourself, the Planner will **automatically** begin its own internal onboarding process. This involves sequentially reading the core documents listed above (starting with `docs/SYSTEM_PROMPT.MD`, then `docs/PLANNER_OPERATING_MANUAL.MD`, etc.), as detailed in its `SYSTEM_PROMPT.MD`.
+    * The Planner will **confirm its understanding with you** after processing key groups of documents and will await your go-ahead before proceeding to the next stage or being ready for tasks.
+    * This entire internal onboarding by the Planner must complete before you can assign it your first development task for the session.
 
-1.  Invoke the AI Planner (details depend on your interface with the Planner).
-2.  The Planner will ask you to identify yourself (George or Mihnea).
-3.  The Planner will then review `docs/PROJECT_TODO.md` and `docs/PROJECT_STATUS.md`.
-4.  Clearly state your objective for the session.
+2.  **Starting a Development Session (After Planner Onboarding):**
+    * Once the Planner confirms it's fully onboarded and ready (e.g., *"I am now fully onboarded and ready to assist. Please provide your objective for this session."*), you can state your development goal.
+    * The Planner will then review `docs/PROJECT_TODO.MD` and `docs/PROJECT_STATUS.MD` and proceed with planning.
 
-### Example Onboarding Prompt for Mihnea (as Operator)
+### Example: Mihnea's First Task Instruction (Post-Planner Onboarding)
 
-If you are Mihnea, after the Planner asks for your identity and reviews the status, you can initiate a task like this:
+*(This interaction occurs **after** the AI Planner has completed its multi-step internal onboarding and confirmed its readiness with Mihnea.)*
 
-**Mihnea:** "Hi Planner, I'm Mihnea. For this session, I want to start implementing the basic UI for displaying the 'Trending Posts' feed. We should create a Svelte component that takes the mock data and lists out the posts with their author, content, and timestamp. Let's call the feature `display-trending-posts`."
+**Mihnea:** "Hi Planner, thanks for confirming you're ready. I'm Mihnea. For this session, I want to start implementing the basic UI for displaying the 'Trending Posts' feed. We should create a Svelte component that takes the mock data and lists out the posts with their author, content, and timestamp. Let's call the feature `display-trending-posts`."
 
-The Planner will then guide the process, including instructing the Executor to create a new feature branch (`feature/display-trending-posts` or similar) and manage commits with your confirmation.
+The Planner will then guide the process. Since the operator is Mihnea, its first action will be to instruct the AI Executor to ask Mihnea for a feature branch name (derived from `display-trending-posts`) and create that branch from `develop`. Subsequent commits will also require Mihnea's explicit confirmation.
