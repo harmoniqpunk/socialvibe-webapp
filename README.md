@@ -13,6 +13,7 @@ This repository contains the source code for the SocialVibe web application, a S
 - [Technologies Used](#technologies-used)
 - [Contributing](#contributing)
 - [License](#license)
+- [AI Planner & Development Workflow](#ai-planner-and-development-workflow)
 
 ## Prerequisites
 
@@ -111,3 +112,30 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+## AI Planner & Development Workflow
+
+This project utilizes an AI Planner to help manage and drive development. Please familiarize yourself with the documentation in the `docs/` directory, especially:
+
+* `docs/SYSTEM_PROMPT.md`: The AI Planner's core operating instructions.
+* `docs/PLANNER_OPERATING_MANUAL.md`: Detailed guidelines for how the Planner works, including Git workflows and progress tracking.
+* `docs/PROJECT_OVERVIEW.md`: The vision and goals for this application.
+* `docs/ROLES_AND_RESPONSIBILITIES.md`: Defines who is who (human and AI).
+* `docs/BROWSER_TOOLS_GUIDE.md`: Information on setting up and using browser-based development tools with the AI Executor.
+
+### Onboarding the AI Planner
+
+To start a development session with the AI Planner:
+
+1.  Invoke the AI Planner (details depend on your interface with the Planner).
+2.  The Planner will ask you to identify yourself (George or Mihnea).
+3.  The Planner will then review `docs/PROJECT_TODO.md` and `docs/PROJECT_STATUS.md`.
+4.  Clearly state your objective for the session.
+
+### Example Onboarding Prompt for Mihnea (as Operator)
+
+If you are Mihnea, after the Planner asks for your identity and reviews the status, you can initiate a task like this:
+
+**Mihnea:** "Hi Planner, I'm Mihnea. For this session, I want to start implementing the basic UI for displaying the 'Trending Posts' feed. We should create a Svelte component that takes the mock data and lists out the posts with their author, content, and timestamp. Let's call the feature `display-trending-posts`."
+
+The Planner will then guide the process, including instructing the Executor to create a new feature branch (`feature/display-trending-posts` or similar) and manage commits with your confirmation.
