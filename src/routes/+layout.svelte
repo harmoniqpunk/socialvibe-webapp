@@ -187,7 +187,6 @@
 	</main>
 </div>
 
-<!-- Glow Effect Style -->
 <style lang="postcss">
 	:global(body) {
 		@apply bg-light-positive-background dark:bg-dark-positive-background text-light-positive-primary dark:text-dark-positive-primary;
@@ -201,5 +200,11 @@
 	/* Prevent body scroll when menu is open */
 	:global(body.menu-open) {
 		overflow: hidden;
+	}
+
+	/* Minimal styles for the container, if any, or rely on app.css */
+	.app-container {
+		/* display: flex; flex-direction: column; min-height: 100vh; */
+		/* Adjust as needed, or could be empty if global styles handle it */
 	}
 </style>

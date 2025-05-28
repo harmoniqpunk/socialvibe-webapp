@@ -53,9 +53,6 @@
 		"wrangler": "^3.87.0"
 	},
 	"type": "module",
-	"workspaces": [
-		"packages/*"
-	],
 	"dependencies": {
 		"lucide-svelte": "^0.511.0"
 	}
