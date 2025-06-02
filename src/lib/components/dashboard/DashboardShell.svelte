@@ -109,7 +109,8 @@
   $: posts = selectedTab === 'trending' ? trendingPosts : latestPosts;
 </script>
 
-<div class="min-h-screen bg-gray-100 p-4">
+<div class="bg-gray-100" style="height:50px;"></div>
+<div class="min-h-screen bg-gray-100 pb-4">
   <div class="max-w-4xl mx-auto">
     <!-- Header -->
     <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
