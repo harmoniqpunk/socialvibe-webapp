@@ -12,6 +12,7 @@
 | TODO-101| Implement Basic 'Trending Posts' Feed Display      | High     | Planner     | Pending   | 2024-03-19 | Use `src/lib/mockTwitterData.ts`.       |
 | TODO-102| Implement Basic 'Latest Posts' Feed Display        | High     | Planner     | Pending   | 2024-03-19 | Simulate live feed.                       |
 | TODO-103| Create Reusable Post Display Component (`Post.svelte`)| High   | Planner     | Pending   | 2024-03-19 | Display author, content, time.            |
+| TODO-104| Add top margin to "ReplyGuy Command Center" header | High     | Executor    | Pending   |            | Ensure header doesn't touch top nav bar. |
 
 ## Future Tasks
 * (Planner to add tasks based on `docs/PROJECT_OVERVIEW.MD` and operator input) 
