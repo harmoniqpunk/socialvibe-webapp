@@ -16,3 +16,8 @@
 
 ## Future Tasks
 * (Planner to add tasks based on `docs/PROJECT_OVERVIEW.MD` and operator input) 
+
+## Phase 2: SvelteKit Refactor
+| Task ID | Description | Priority | Assigned To | Status | Due Date | Notes |
+|---------|-------------|----------|-------------|--------|----------|-------|
+| REFAC-SVELTE-001 | Full refactor to SvelteKit & cleanup React/JSX | Critical | Executor | In Progress | | Remove src/ui, implement dashboard in Svelte | 
