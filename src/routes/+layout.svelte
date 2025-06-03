@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '../app.css';
+	import { initializeWasm } from '$lib';
 	import { onMount } from 'svelte';
 	import { colors } from '$lib/style/colors';
 	import { Dropdown, DropdownDivider, DropdownHeader, DropdownItem } from 'flowbite-svelte';
@@ -40,9 +41,14 @@
 		currentIdentity = identity;
 	}
 
-	onMount(() => {
+	onMount(async () => {
 		setColorScheme();
 		window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setColorScheme);
+		try {
+			await initializeWasm();
+		} catch (e) {
+			console.error("Failed to initialize WASM", e);
+		}
 		return () => {
 			window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', setColorScheme);
 		};
@@ -91,7 +97,7 @@
 
 <!-- Main Content -->
 <div 
-	class="pt-16 sm:pt-16 sm:ml-64 transition-transform duration-300 ease-in-out"
+	class="pt-16 sm:pt-16 sm:ml-64 transition-transform duration-300 ease-in-out min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
 	role="presentation"
 	on:click={closeSidebar}
 	on:keydown={(e) => e.key === 'Escape' && closeSidebar()}
@@ -114,11 +120,5 @@
 	/* Prevent body scroll when menu is open */
 	:global(body.menu-open) {
 		overflow: hidden;
-	}
-
-	/* Minimal styles for the container, if any, or rely on app.css */
-	.app-container {
-		/* display: flex; flex-direction: column; min-height: 100vh; */
-		/* Adjust as needed, or could be empty if global styles handle it */
 	}
 </style>
