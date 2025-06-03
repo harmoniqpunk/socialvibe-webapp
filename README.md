@@ -134,14 +134,13 @@ This project utilizes an AI Planner to help manage and drive development. The Pl
     * To start a session, you (the Human Operator - George or Mihnea) must invoke the AI Planner.
     * When invoking the Planner, you need to provide it with access to the `socialvibe-webapp` project folder (so it can read the `docs/` and `src/` files).
     * Your initial prompt to the Planner should identify who you are (George or Mihnea) and state that its first task is to perform its internal onboarding. For example:
-      `"Hello Planner, this is [Your Name: George/Mihnea]. Please begin your standard onboarding procedure for the SocialVibe WebApp project. The project folder is accessible at [current working directory or path to project root]."`
+      `"Hello Planner, this is [Your Name: George/Mihnea]. Please onboard for the SocialVibe WebApp project by first reading your primary instructions in 'docs/SYSTEM_PROMPT.MD'. The project folder is accessible at [current working directory or path to project root]. Let me know when you are ready for my objective."`
 
 2.  **Planner's Internal Onboarding (AI Planner Action):**
     * Upon receiving your initial prompt, the Planner will follow the instructions in its `docs/SYSTEM_PROMPT.MD` (Section 2).
     * It will first confirm your identity.
     * Then, it will announce that it's starting its internal onboarding. This involves sequentially reading core project documents (`SYSTEM_PROMPT.MD`, `PLANNER_OPERATING_MANUAL.MD`, etc.).
-    * The Planner will **confirm its understanding with you** after processing key groups of documents and will await your go-ahead before proceeding to the next stage or being ready for tasks.
-    * This entire internal onboarding by the Planner must complete before you can assign it your first development task for the session.
+    * The Planner will **confirm its understanding with you** after processing key groups of documents. For George (Tech Lead), the Planner will state its understanding and proceed to the next stage of onboarding unless explicitly told to stop or clarify. For Mihnea (Product Owner), the Planner will await explicit confirmation before proceeding. This entire internal onboarding by the Planner must complete before you can assign it your first development task for the session.
 
 3.  **Starting a Development Task (After Planner Onboarding):**
     * Once the Planner confirms it's fully onboarded and ready (e.g., *"I am now fully onboarded and ready to assist. Please provide your objective for this session."*), you can state your development goal.
